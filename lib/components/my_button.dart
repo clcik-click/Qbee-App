@@ -16,18 +16,21 @@ class MyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return Expanded(
       child: ElevatedButton.icon(
         onPressed: isEnabled ? onPressed : null,
-        icon: Icon(icon, color: isEnabled ? Colors.white : Colors.white70),
-        label: Text(
-          label,
-          style: TextStyle(color: isEnabled ? Colors.white : Colors.white70),
-        ),
+        icon: Icon(icon),
+        label: Text(label),
         style: ElevatedButton.styleFrom(
           backgroundColor: isEnabled
-              ? Theme.of(context).colorScheme.primary
-              : Colors.grey,
+              ? colorScheme.primary
+              : colorScheme.surface, // softer disabled background
+          foregroundColor: isEnabled
+              ? colorScheme.onPrimary
+              : colorScheme.onSurface.withOpacity(0.5),
           padding: const EdgeInsets.symmetric(vertical: 14),
           elevation: isEnabled ? 3 : 0,
         ),
