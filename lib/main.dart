@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qbee/model/model_provider.dart';
+import 'package:qbee/models/model_provider.dart';
 import 'package:qbee/pages/photo_page.dart';
 import 'package:qbee/theme/dark_mode.dart';
 import 'package:qbee/theme/light_mode.dart';
@@ -23,11 +23,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
+    final themeProvider = context.watch<ThemeProvider>();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: PhotoPage(),
+      home: const PhotoPage(),
 
       theme: lightMode,
       darkTheme: darkMode,
